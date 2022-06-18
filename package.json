@@ -23,7 +23,7 @@
   "author": "GitHub",
   "license": "MIT",
   "dependencies": {
-    "@actions/cache": "^2.0.6",
+    "@actions/cache": "https://gitpkg.now.sh/andreievg/toolkit-cache-abstractions/packages/cache?b3bbed5f9fca8178e171cb382c9a4c3b4638818d",
     "@actions/core": "^1.7.0",
     "@actions/exec": "^1.1.1",
     "@actions/io": "^1.1.2"

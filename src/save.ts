@@ -1,5 +1,6 @@
 import * as cache from "@actions/cache";
 import * as core from "@actions/core";
+import { clientOverride } from "./cacheClient";
 
 import { Events, Inputs, State } from "./constants";
 import * as utils from "./utils/actionUtils";
@@ -45,7 +46,10 @@ async function run(): Promise<void> {
         });
 
         try {
-            utils.logObject({ cachePaths, primaryKey });
+            await cache._saveCache(cachePaths, primaryKey, clientOverride(), {
+                uploadChunkSize: utils.getInputAsInt(Inputs.UploadChunkSize)
+            });
+            core.info(`Cache saved with key: ${primaryKey}`);
         } catch (error: unknown) {
             const typedError = error as Error;
             if (typedError.name === cache.ValidationError.name) {
