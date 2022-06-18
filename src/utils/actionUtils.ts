@@ -43,6 +43,10 @@ export function getCacheState(): string | undefined {
     return undefined;
 }
 
+export function logObject(o: object): void {
+    core.info(JSON.stringify(o, null, " "));
+}
+
 export function logWarning(message: string): void {
     const warningPrefix = "[warning]";
     core.info(`${warningPrefix}${message}`);
